@@ -1,0 +1,33 @@
+1. settings.py
+2. downloader.py
+3. cleaner.py
+4. indicators.py
+5. target_builder.py
+6. train.py
+7. predict.py
+8. signal_generator.py
+9. engine.py
+10. metrics.py
+11. main.py
+
+End-to-End Pipeline View
+START
+
+GET configuration
+GET stock data
+CHECK data quality
+CLEAN data
+CREATE features
+CREATE labels
+PREPARE modelling dataset
+SPLIT dataset by time
+TRAIN baseline model
+PREDICT on unseen data
+MEASURE model quality
+CONVERT predictions into trading signals
+SIMULATE trades historically
+MEASURE trading performance
+PLOT results
+SAVE reports and files
+
+END

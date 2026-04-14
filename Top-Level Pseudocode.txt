@@ -1,0 +1,54 @@
+Top-Level Pseudocode
+1. Main System Flow (src/main.py)
+
+START PROGRAM
+
+LOAD project settings
+INITIALISE logger
+CREATE required folders if missing
+
+FOR each ticker in configured ticker list:
+    DOWNLOAD raw market data
+    SAVE raw market data to data/raw/
+
+    LOAD raw market data
+    VALIDATE raw data structure
+    CLEAN raw data
+    SAVE cleaned data to data/interim/
+
+    BUILD technical indicators
+    BUILD lag features
+    BUILD target labels
+    DROP rows with incomplete feature/target values
+    SAVE processed dataset to data/processed/
+
+    SPLIT processed dataset chronologically into train/test sets
+
+    SELECT model based on settings
+    TRAIN model on training data
+    SAVE trained model and metadata if configured
+
+    GENERATE predictions on test data
+    GENERATE prediction probabilities if supported
+
+    EVALUATE machine learning performance
+    SAVE ML evaluation results
+
+    CONVERT predictions/probabilities into trading signals
+    APPLY entry rules
+    APPLY exit rules
+    APPLY risk management constraints
+
+    RUN backtest using generated signals and market prices
+    TRACK portfolio cash, positions, equity, and trades
+    SAVE trade log and backtest results
+
+    CALCULATE trading performance metrics
+    GENERATE charts and summary report
+    EXPORT final outputs to reports/ and data/results/
+
+END FOR
+
+PRINT final completion message
+END PROGRAM
+
