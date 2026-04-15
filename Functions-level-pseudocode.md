@@ -341,3 +341,50 @@ END FUNCTION
 END FUNCTION
 
 -----------------------------------------------------------
+J. src/models/model_utils.py
+
+
+ 1. select_model(model_name, hyperparameters)
+   
+   FUNCTION select_model(model_name, hyperparameters):
+    IF model_name is logistic_regression:
+        CREATE Logistic Regression model using hyperparameters
+
+    ELSE IF model_name is decision_tree:
+        CREATE Decision Tree model
+
+    ELSE IF model_name is random_forest:
+        CREATE Random Forest model
+
+    ELSE IF model_name is xgboost:
+        CREATE XGBoost model
+
+    ELSE:
+        RAISE unsupported model error
+
+    RETURN model
+END FUNCTION
+
+
+2. split_features_target(data, target_column)
+  
+  FUNCTION split_features_target(data, target_column):
+    X = all columns except target_column and non-feature columns
+    y = target_column
+    RETURN X, y
+END FUNCTION
+
+ 3. time_series_train_test_split(X, y, train_ratio)
+
+   FUNCTION time_series_train_test_split(X, y, train_ratio):
+    CALCULATE split index based on chronological order
+    X_train = rows before split
+    X_test = rows after split
+    y_train = rows before split
+    y_test = rows after split
+
+    RETURN X_train, X_test, y_train, y_test
+END FUNCTION
+
+
+ 
