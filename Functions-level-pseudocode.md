@@ -386,5 +386,26 @@ END FUNCTION
     RETURN X_train, X_test, y_train, y_test
 END FUNCTION
 
+--------------------------------------
+
+K. src/models/train.py
 
  
+ 1. train_model(X_train, y_train, model_name, hyperparameters)
+
+ FUNCTION train_model(X_train, y_train, model_name, hyperparameters):
+    CALL select_model to create model
+    FIT model on X_train and y_train
+    RETURN trained model
+END FUNCTION
+
+2. save_model(model, model_path, metadata)
+
+ FUNCTION save_model(model, model_path, metadata):
+    SERIALISE model to disk
+    SAVE metadata file
+    LOG model save success
+END FUNCTION
+
+
+----------------------------------------------------------------
