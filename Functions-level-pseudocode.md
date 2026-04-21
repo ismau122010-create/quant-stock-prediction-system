@@ -409,3 +409,57 @@ END FUNCTION
 
 
 ----------------------------------------------------------------
+
+L. src/models/predict.py
+
+FUNCTION generate_predictions(model, X_test):
+    y_pred = model.predict(X_test)
+
+    IF model supports probabilities:
+        y_prob = probability of positive class
+    ELSE:
+        y_prob = null
+
+    RETURN y_pred, y_prob
+END FUNCTION
+
+----------------------------------------
+
+M. src/models/evaluate.py
+
+ 1. evaluate_classification_model(y_true, y_pred, y_prob)
+
+  FUNCTION evaluate_classification_model(y_true, y_pred, y_prob):
+    CALCULATE accuracy
+    CALCULATE precision
+    CALCULATE recall
+    CALCULATE F1 score
+
+    IF y_prob is available:
+        CALCULATE ROC AUC
+
+    CALCULATE confusion matrix
+
+    STORE all results in dictionary
+    RETURN results dictionary
+END FUNCTION
+
+2. extract_feature_importance(model, feature_names)
+ 
+ FUNCTION extract_feature_importance(model, feature_names):
+    IF model has feature_importances_:
+        PAIR feature names with importance values
+        SORT descending
+        RETURN feature importance table
+
+    ELSE IF model has coefficients:
+        PAIR feature names with coefficient values
+        SORT by absolute value
+        RETURN coefficient table
+
+    ELSE:
+        RETURN null
+END FUNCTION
+
+
+-------------------------------------
